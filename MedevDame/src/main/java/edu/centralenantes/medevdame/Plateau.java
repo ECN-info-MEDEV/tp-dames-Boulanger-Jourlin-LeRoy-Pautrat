@@ -5,15 +5,17 @@
  */
 package edu.centralenantes.medevdame;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Louis
  */
 public class Plateau {
     
-    Piece[][] liste_de_cases;
-    Joueur joueur1;
-    Joueur joueur2;
+    public static ArrayList<Piece> liste_de_cases;
+    private Joueur joueur1;
+    private Joueur joueur2;
     
     public void tourDeJeu(){
         
