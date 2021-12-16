@@ -5,11 +5,13 @@
  */
 package edu.centralenantes.medevdame;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author asjou
  */
-public class Piece {
+public abstract class Piece {
     private boolean couleur;
     
     private int posX;
@@ -45,14 +47,9 @@ public class Piece {
         this.posY = posY;
     }
     
-    public void deplacementsPossibles(){
-        
-    }
+    public abstract ArrayList<int[]> deplacementsPossibles();
     
-    public boolean deplacer(int x, int y){
-        //Return true si on a mangé qqun ou si la position n'est pas possible
-        return true;
-    }
+    public abstract boolean deplacer(int x, int y);
     
     public void capturer(int x, int y){
         
