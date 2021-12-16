@@ -8,7 +8,7 @@ package edu.centralenantes.medevdame;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe abstraite pour les pièces, classe mère des Pions et des Dames
  * @author asjou
  */
 public abstract class Piece {
@@ -16,6 +16,8 @@ public abstract class Piece {
     
     private int posX;
     private int posY;
+    
+    private boolean notCaptured;
 
     public boolean isCouleur() {
         return couleur;
@@ -37,14 +39,24 @@ public abstract class Piece {
         this.posY = posY;
     }
 
+    public boolean isNotCaptured() {
+        return notCaptured;
+    }
+
+    public void setNotCaptured(boolean notCaptured) {
+        this.notCaptured = notCaptured;
+    }
+    
     public Piece(boolean couleur) {
         this.couleur = couleur;
+        this.notCaptured = true;
     }
 
     public Piece(boolean couleur, int posX, int posY) {
         this.couleur = couleur;
         this.posX = posX;
         this.posY = posY;
+        this.notCaptured = true;
     }
     
     /**
@@ -67,31 +79,29 @@ public abstract class Piece {
         int tempPosY = this.getPosY();
         int dirX = (x-tempPosX)/Math.abs(x-tempPosX);
         int dirY = (y-tempPosY)/Math.abs(y-tempPosY);
-        while(tempPosX+dirX!=x&&tempPosY+dirY!=y){
+        while(tempPosX!=x&&tempPosY!=y){
             tempPosX += dirX;
             tempPosY += dirY;
             Piece pXY = Plateau.isPieceOnPos(tempPosX,tempPosY);
 
             //On regarde si la position est occupée par une pièce
-            if(pXY==null){
-                this.setPosX(tempPosX);
-                this.setPosX(tempPosY);
-            }
-            else{
+            if(pXY!=null){
                 if(pXY.isCouleur()==this.isCouleur()){
                     //Cas qui n'est pas censé arriver, le déplacement est interrompu
+                    this.setPosX(tempPosX);
+                    this.setPosY(tempPosY);
                     return false;
                 }
                 else{
                     this.setPosX(tempPosX+dirX);
-                    this.setPosX(tempPosY+dirY);
+                    this.setPosY(tempPosY+dirY);
                     capturer(tempPosX,tempPosY);
                     return this.capturePossible();
                 }
             }
         }
         this.setPosX(x);
-        this.setPosX(y);
+        this.setPosY(y);
         return false;
     };
     
@@ -108,5 +118,8 @@ public abstract class Piece {
      */
     public void capturer(int x, int y){
         //Supprime la case du plateau
+        //La mémoire sera vidée par le GC
+        Plateau.isPieceOnPos(x, y).setNotCaptured(false);
+        System.out.println("Vous avez capturé la pièce en position " + x + "," + y + " au cours de votre rafle !");
     }
 }
