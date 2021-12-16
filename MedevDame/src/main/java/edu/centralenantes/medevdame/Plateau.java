@@ -69,7 +69,8 @@ public class Plateau {
     }    
     
     /**
-     * Méthode qui simule un tour de jeu sur le plateau
+     * Méthode qui simule un tour de jeu sur le plateau 
+     * On considère qu'un tour de jeu complet c'est un mouvement de la part des deux joueurs
      */
     public void tourDeJeu(){
         joueur1.Jouer();
