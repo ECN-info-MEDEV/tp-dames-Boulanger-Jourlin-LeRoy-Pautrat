@@ -49,7 +49,20 @@ public abstract class Piece {
     
     public abstract ArrayList<int[]> deplacementsPossibles();
     
-    public abstract boolean deplacer(int x, int y);
+    public boolean deplacer(int x, int y){
+        //return true si on a mangé qqun ou si le déplacement est interrompu
+        //On suppose qu'on a vérifié que le déplacement est possible avant de lancer cette méthode
+        int posX = this.getPosX();
+        int posY = this.getPosY();
+        int dirX = (x*posX)/(x*posX);
+        int dirY = (y*posY)/(y*posY);
+        while(posX+dirX!=x&&posY+dirY!=y){
+            posX += dirX;
+            posY += dirY;
+            //if()
+        }
+        return false;
+    };
     
     public void capturer(int x, int y){
         

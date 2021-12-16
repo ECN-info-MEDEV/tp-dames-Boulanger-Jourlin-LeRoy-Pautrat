@@ -22,14 +22,28 @@ public class Pion extends Piece {
     }
 
     @Override
-    public boolean deplacer(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public ArrayList<int[]> deplacementsPossibles() {
         ArrayList<int[]> result = new ArrayList<>();
-        //if()
+        if(this.getPosX()-1>=0){
+            if(this.getPosY()-1>=0){
+                result.add(new int[]{this.getPosX()-1,this.getPosY()-1});
+                System.out.println((this.getPosX()-1) +","+(this.getPosX()-1));
+            }
+            if(this.getPosY()+1<10){
+                result.add(new int[]{this.getPosX()-1,this.getPosY()+1});
+                System.out.println((this.getPosX()-1) +","+(this.getPosX()+1));
+            }
+        }
+        if(this.getPosX()+1<10){
+            if(this.getPosY()-1>=0){
+                result.add(new int[]{this.getPosX()+1,this.getPosY()-1});
+                System.out.println((this.getPosX()+1) +","+(this.getPosX()-1));
+            }
+            if(this.getPosY()+1<10){
+                result.add(new int[]{this.getPosX()+1,this.getPosY()+1});
+                System.out.println((this.getPosX()+1) +","+(this.getPosX()+1));
+            }
+        }
         return result;
     }
     
