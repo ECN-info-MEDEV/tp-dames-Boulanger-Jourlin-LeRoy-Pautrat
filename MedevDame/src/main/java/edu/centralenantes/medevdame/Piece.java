@@ -47,25 +47,64 @@ public abstract class Piece {
         this.posY = posY;
     }
     
+    /**
+     *
+     * @return
+     */
     public abstract ArrayList<int[]> deplacementsPossibles();
     
+    /**
+     * Méthode qui déplace une pièce à la position indiquée et renvoie true si le joueur peut continuer à se déplacer, c'est-à-dire si il y a une pièce mangeable à portée
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean deplacer(int x, int y){
         //return true si on a mangé qqun ou si le déplacement est interrompu
         //On suppose qu'on a vérifié que le déplacement est possible avant de lancer cette méthode
-        int posX = this.getPosX();
-        int posY = this.getPosY();
-        int dirX = (x*posX)/(x*posX);
-        int dirY = (y*posY)/(y*posY);
-        while(posX+dirX!=x&&posY+dirY!=y){
-            posX += dirX;
-            posY += dirY;
+        int tempPosX = this.getPosX();
+        int tempPosY = this.getPosY();
+        int dirX = (x-tempPosX)/Math.abs(x-tempPosX);
+        int dirY = (y-tempPosY)/Math.abs(y-tempPosY);
+        while(tempPosX+dirX!=x&&tempPosY+dirY!=y){
+            tempPosX += dirX;
+            tempPosY += dirY;
+            Piece pXY = isPieceOnPos(tempPosX,tempPosY);
             //On regarde si la position est occupée par une pièce
-            //if()
+            if(pXY==null){
+                this.setPosX(tempPosX);
+                this.setPosX(tempPosY);
+            }
+            else{
+                if(pXY.isCouleur()==this.isCouleur()){
+                    //Cas qui n'est pas censé arriver, le déplacement est interrompu
+                    return false;
+                }
+                else{
+                    this.setPosX(tempPosX+dirX);
+                    this.setPosX(tempPosY+dirY);
+                    capturer(tempPosX,tempPosY);
+                    return this.capturePossible();
+                }
+            }
         }
+        this.setPosX(x);
+        this.setPosX(y);
         return false;
     };
     
+    /**
+     * Méthode qui indique s'il y a des pièces possibles à manger sur le plateau (renvoie true dans ce cas)
+     * @return
+     */
+    public abstract boolean capturePossible();
+    
+    /**
+     * Méthode qui mange la pièce à la case considérée
+     * @param x
+     * @param y
+     */
     public void capturer(int x, int y){
-        
+        //Supprime la case du plateau
     }
 }

@@ -25,5 +25,10 @@ public class Dame extends Piece {
     public ArrayList<int[]> deplacementsPossibles() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean capturePossible() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
