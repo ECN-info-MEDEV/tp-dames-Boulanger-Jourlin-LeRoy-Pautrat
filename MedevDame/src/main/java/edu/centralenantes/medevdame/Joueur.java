@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Joueur {
     private boolean couleur;
     private Plateau plt;
+    
     /**
      * Constructeur de la classe Joueur, le bool défini la couleur du Joueur true = blanc, false = noir
      * @param coul 
@@ -23,6 +24,11 @@ public class Joueur {
         this.couleur=coul;
         this.plt=plt;
     }
+
+    public boolean isCouleur() {
+        return couleur;
+    }
+    
     
     /**
      * Méthode Jouer qui permet au Joueur d'effectuer un tour entier
@@ -94,7 +100,5 @@ public class Joueur {
             System.out.println("Vous avez le droit de rejouer");
             Jouer();
         }
-    }
-    
-    
+    }  
 }
