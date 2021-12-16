@@ -54,7 +54,7 @@ public class Charger {
             //On ajoute la pièce crée avec ces mots à la liste des pièces
             liste_pieces.add(creePiece(liste_mots));
         }
-        plateau.setListe_de_cases(liste_pieces);
+        plateau.liste_de_cases= liste_pieces;
         return plateau;
         
     }

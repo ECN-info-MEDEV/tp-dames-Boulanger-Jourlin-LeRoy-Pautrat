@@ -80,7 +80,7 @@ public class Enregistrer {
         try {
             //On écrit les caractéristiques et la position de chaque pièce 
             
-            for(Piece piece : plateau.getListe_de_cases()){
+            for(Piece piece : plateau.liste_de_cases){
                 String ligne = "";
                 if(piece instanceof Dame){
                     ligne += "Dame,";
