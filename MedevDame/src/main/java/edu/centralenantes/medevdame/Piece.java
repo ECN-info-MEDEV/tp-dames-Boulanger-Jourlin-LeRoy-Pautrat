@@ -48,7 +48,7 @@ public abstract class Piece {
     }
     
     /**
-     *
+     * Méthode abstraite qui renvoie les déplacements possibles sous forme d'une liste
      * @return
      */
     public abstract ArrayList<int[]> deplacementsPossibles();
