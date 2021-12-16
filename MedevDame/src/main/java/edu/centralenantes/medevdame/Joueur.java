@@ -37,7 +37,8 @@ public class Joueur {
         //Affiche le plateau au Joueur
         Scanner sc = new Scanner(System.in);
         ArrayList<Piece> cases= Plateau.liste_de_cases;
-        Piece pieceJoue = new Piece(this.couleur);
+        Piece pieceJoue;
+        pieceJoue=null;
         boolean isCouleur=false;
         int posX=0;
         int posY=0;
@@ -78,8 +79,7 @@ public class Joueur {
         //Demande au joueur où il veut bouger la pièce
         
         System.out.println("Voici les déplacements possibles:");
-        //ArrayList<int[]> result=pieceJoue.deplacementsPossibles();
-        ArrayList<int[]> result = new ArrayList();//TODO
+        ArrayList<int[]> result=pieceJoue.deplacementsPossibles();
         boolean isDeplacement=false;
         while(!isDeplacement){
             System.out.println("Quel déplacement choisissez vous?");
