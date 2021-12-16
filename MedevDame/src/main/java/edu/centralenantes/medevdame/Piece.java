@@ -122,4 +122,22 @@ public abstract class Piece {
         Plateau.isPieceOnPos(x, y).setNotCaptured(false);
         System.out.println("Vous avez capturé la pièce en position " + x + "," + y + " au cours de votre rafle !");
     }
+    
+    /**
+     * Méthode à lancer à chaque fin de tour sur la pièce jouée
+     */
+    public void finTourPiece(){
+        if(this instanceof Pion pion){
+            pion.getPromoted();
+        }
+        ArrayList<Piece> piecesRaflees = new ArrayList();
+        for(int i = 0; i<Plateau.liste_de_cases.size();i++){
+            if(!Plateau.liste_de_cases.get(i).isNotCaptured()){
+                piecesRaflees.add(Plateau.liste_de_cases.get(i));
+            }
+        }
+        for(int i=0; i<piecesRaflees.size();i++){
+            Plateau.liste_de_cases.remove(piecesRaflees.get(i));
+        }
+    }
 }
