@@ -16,7 +16,7 @@ public class Plateau {
     /**
      * La liste des pièces présentes sur le plateau
      */
-    private ArrayList<Piece> liste_de_cases;
+    public static ArrayList<Piece> liste_de_cases;
     /**
      * Le premier joueur
      */
@@ -69,29 +69,40 @@ public class Plateau {
     }    
     
     /**
-     * Méthode qui simule un tour de jeu sur le plateau
+     * Méthode qui simule un tour de jeu sur le plateau 
+     * On considère qu'un tour de jeu complet c'est un mouvement de la part des deux joueurs
      */
-    public void tourDeJeu(){
-        while(!partie_finie()){
-            joueur1.Jouer();
+    public static void tourDeJeu(){
+        joueur1.Jouer();
 
-            joueur2.Jouer();
-        }
+        joueur2.Jouer();
     }
     
     /**
      * Fonction qui détermine si la partie est finie et renvoie le joueur qui gagne
-     * @return 0 si le joueur des blancs gagnent et 1 si c'est les noirs
+     * @return true si la partie est finie et false sinon
      */
-    private boolean partie_finie(){
+    public static boolean partie_finie(){
         boolean partie_finie = false;
         
+        boolean blancs_toujours_presents = false;
+        boolean noirs_toujours_presents = false;
         
+        for(Piece piece : liste_de_cases){
+            if (piece.isCouleur()){
+                blancs_toujours_presents = true;
+            }
+            else{
+                noirs_toujours_presents = true;
+            }
+        }
+        
+        partie_finie = !blancs_toujours_presents || !noirs_toujours_presents;
         
         return partie_finie;
     }
     
-    public void afficher(){
+    public static void afficher(){
         // On créé une ligne de - - - pour délimiter les lignes du plateau
         String ligne_limite = "";
         for(int j = 0; j < 10; j++){
@@ -140,7 +151,13 @@ public class Plateau {
         }          
     }
     
-    public Piece isPieceOnPos(int posX, int posY){
+    /**
+     * Méthode pour dire si une pièce est sur la position demandée
+     * @param posX l'abscisse de la position demandée
+     * @param posY l'ordonnée de la position demandée
+     * @return null s'il n'y a pas de pièce et sinon renvoie la pièce
+     */
+    public static Piece isPieceOnPos(int posX, int posY){
         Piece piece_presente = null;
         
         for(Piece piece : liste_de_cases){
@@ -152,9 +169,6 @@ public class Plateau {
         return piece_presente;
     }
 
-    public ArrayList<Piece> getListe_de_cases() {
-        return liste_de_cases;
-    }
 
     public Joueur getJoueur1() {
         return joueur1;
@@ -164,9 +178,6 @@ public class Plateau {
         return joueur2;
     }
 
-    public void setListe_de_cases(ArrayList<Piece> liste_de_cases) {
-        this.liste_de_cases = liste_de_cases;
-    }
 
     public void setJoueur1(Joueur joueur1) {
         this.joueur1 = joueur1;
