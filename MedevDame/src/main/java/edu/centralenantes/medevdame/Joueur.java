@@ -25,12 +25,13 @@ public class Joueur {
     }
     
     /**
-     * Méthode Jouer
+     * Méthode Jouer qui permet au Joueur d'effectuer un tour entier
      */
     public void Jouer(){
         //Affiche le plateau au Joueur
         Scanner sc = new Scanner(System.in);
         ArrayList<Piece> cases= Plateau.liste_de_cases;
+        Piece pieceJoue = new Piece(this.couleur);
         boolean isCouleur=false;
         int posX=0;
         int posY=0;
@@ -57,6 +58,7 @@ public class Joueur {
                 if(p.getPosX()==posX && p.getPosY()==posY){
                     if(p.isCouleur()==this.couleur){
                         isCouleur=true;
+                        pieceJoue=p;
                         break;
                     }
                     else{
@@ -68,6 +70,30 @@ public class Joueur {
             }
         }
         //Demande au joueur où il veut bouger la pièce
+        
+        System.out.println("Voici les déplacements possibles:");
+        //ArrayList<int[]> result=pieceJoue.deplacementsPossibles();
+        ArrayList<int[]> result = new ArrayList();//TODO
+        boolean isDeplacement=false;
+        while(!isDeplacement){
+            System.out.println("Quel déplacement choisissez vous?");
+
+            System.out.println("Abscisses");
+            posX=sc.nextInt();
+
+            System.out.println("Ordonnées");
+            posY=sc.nextInt();
+            for( int[] t : result){
+                if(t[0]==posX &&t[1]==posY){
+                    isDeplacement=true;
+                    break;
+                }
+            }
+        }
+        if(pieceJoue.deplacer(posX,posY)){
+            System.out.println("Vous avez le droit de rejouer");
+            Jouer();
+        }
     }
     
     
