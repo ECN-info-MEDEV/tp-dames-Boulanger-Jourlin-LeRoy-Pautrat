@@ -98,5 +98,7 @@ public class Joueur {
             System.out.println("Vous avez le droit de rejouer");
             Jouer();
         }
-    }  
+
+    }
+
 }
