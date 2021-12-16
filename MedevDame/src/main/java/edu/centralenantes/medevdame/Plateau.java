@@ -20,11 +20,11 @@ public class Plateau {
     /**
      * Le premier joueur
      */
-    private Joueur joueur1;
+    public static Joueur joueur1;
     /**
      * Le deuxième joueur
      */
-    private Joueur joueur2;
+    public static Joueur joueur2;
     
     /**
      * Le constructeur classique du plateau
@@ -167,24 +167,6 @@ public class Plateau {
         }
         
         return piece_presente;
-    }
-
-
-    public Joueur getJoueur1() {
-        return joueur1;
-    }
-
-    public Joueur getJoueur2() {
-        return joueur2;
-    }
-
-
-    public void setJoueur1(Joueur joueur1) {
-        this.joueur1 = joueur1;
-    }
-
-    public void setJoueur2(Joueur joueur2) {
-        this.joueur2 = joueur2;
     }
     
     
