@@ -195,7 +195,10 @@ public class Plateau {
         }
         
         return piece_presente;
+
     }
+    
+    
     
     
     

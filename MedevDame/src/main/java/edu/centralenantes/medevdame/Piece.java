@@ -48,7 +48,11 @@ public abstract class Piece {
     }
     
     /**
+<<<<<<< HEAD
      * Méthode abstraite qui renvoie les déplacements possibles sous forme d'une liste
+=======
+     *
+>>>>>>> ff51df4afaf244209ba35d1716e8ec7ed07c5b08
      * @return
      */
     public abstract ArrayList<int[]> deplacementsPossibles();
@@ -70,6 +74,7 @@ public abstract class Piece {
             tempPosX += dirX;
             tempPosY += dirY;
             Piece pXY = Plateau.isPieceOnPos(tempPosX,tempPosY);
+
             //On regarde si la position est occupée par une pièce
             if(pXY==null){
                 this.setPosX(tempPosX);
