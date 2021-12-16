@@ -69,7 +69,7 @@ public abstract class Piece {
         while(tempPosX+dirX!=x&&tempPosY+dirY!=y){
             tempPosX += dirX;
             tempPosY += dirY;
-            Piece pXY = isPieceOnPos(tempPosX,tempPosY);
+            Piece pXY = Plateau.isPieceOnPos(tempPosX,tempPosY);
             //On regarde si la position est occupée par une pièce
             if(pXY==null){
                 this.setPosX(tempPosX);
