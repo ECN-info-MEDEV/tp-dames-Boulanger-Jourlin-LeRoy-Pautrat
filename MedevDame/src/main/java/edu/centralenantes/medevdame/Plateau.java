@@ -16,7 +16,7 @@ public class Plateau {
     /**
      * La liste des pièces présentes sur le plateau
      */
-    private ArrayList<Piece> liste_de_cases;
+    public static ArrayList<Piece> liste_de_cases;
     /**
      * Le premier joueur
      */
@@ -72,7 +72,7 @@ public class Plateau {
      * Méthode qui simule un tour de jeu sur le plateau 
      * On considère qu'un tour de jeu complet c'est un mouvement de la part des deux joueurs
      */
-    public void tourDeJeu(){
+    public static void tourDeJeu(){
         joueur1.Jouer();
 
         joueur2.Jouer();
@@ -82,7 +82,7 @@ public class Plateau {
      * Fonction qui détermine si la partie est finie et renvoie le joueur qui gagne
      * @return true si la partie est finie et false sinon
      */
-    public boolean partie_finie(){
+    public static boolean partie_finie(){
         boolean partie_finie = false;
         
         boolean blancs_toujours_presents = false;
@@ -102,7 +102,7 @@ public class Plateau {
         return partie_finie;
     }
     
-    public void afficher(){
+    public static void afficher(){
         // On créé une ligne de - - - pour délimiter les lignes du plateau
         String ligne_limite = "";
         for(int j = 0; j < 10; j++){
@@ -157,7 +157,7 @@ public class Plateau {
      * @param posY l'ordonnée de la position demandée
      * @return null s'il n'y a pas de pièce et sinon renvoie la pièce
      */
-    public Piece isPieceOnPos(int posX, int posY){
+    public static Piece isPieceOnPos(int posX, int posY){
         Piece piece_presente = null;
         
         for(Piece piece : liste_de_cases){
@@ -169,9 +169,6 @@ public class Plateau {
         return piece_presente;
     }
 
-    public ArrayList<Piece> getListe_de_cases() {
-        return liste_de_cases;
-    }
 
     public Joueur getJoueur1() {
         return joueur1;
@@ -181,9 +178,6 @@ public class Plateau {
         return joueur2;
     }
 
-    public void setListe_de_cases(ArrayList<Piece> liste_de_cases) {
-        this.liste_de_cases = liste_de_cases;
-    }
 
     public void setJoueur1(Joueur joueur1) {
         this.joueur1 = joueur1;
