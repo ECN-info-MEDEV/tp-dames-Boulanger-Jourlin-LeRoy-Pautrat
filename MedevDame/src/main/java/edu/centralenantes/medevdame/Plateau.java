@@ -72,21 +72,31 @@ public class Plateau {
      * Méthode qui simule un tour de jeu sur le plateau
      */
     public void tourDeJeu(){
-        while(!partie_finie()){
-            joueur1.Jouer();
+        joueur1.Jouer();
 
-            joueur2.Jouer();
-        }
+        joueur2.Jouer();
     }
     
     /**
      * Fonction qui détermine si la partie est finie et renvoie le joueur qui gagne
-     * @return 0 si le joueur des blancs gagnent et 1 si c'est les noirs
+     * @return true si la partie est finie et false sinon
      */
-    private boolean partie_finie(){
+    public boolean partie_finie(){
         boolean partie_finie = false;
         
+        boolean blancs_toujours_presents = false;
+        boolean noirs_toujours_presents = false;
         
+        for(Piece piece : liste_de_cases){
+            if (piece.isCouleur()){
+                blancs_toujours_presents = true;
+            }
+            else{
+                noirs_toujours_presents = true;
+            }
+        }
+        
+        partie_finie = !blancs_toujours_presents || !noirs_toujours_presents;
         
         return partie_finie;
     }
@@ -140,6 +150,12 @@ public class Plateau {
         }          
     }
     
+    /**
+     * Méthode pour dire si une pièce est sur la position demandée
+     * @param posX l'abscisse de la position demandée
+     * @param posY l'ordonnée de la position demandée
+     * @return null s'il n'y a pas de pièce et sinon renvoie la pièce
+     */
     public Piece isPieceOnPos(int posX, int posY){
         Piece piece_presente = null;
         
