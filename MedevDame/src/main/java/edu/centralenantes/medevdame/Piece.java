@@ -59,6 +59,7 @@ public abstract class Piece {
         while(posX+dirX!=x&&posY+dirY!=y){
             posX += dirX;
             posY += dirY;
+            //On regarde si la position est occupée par une pièce
             //if()
         }
         return false;
