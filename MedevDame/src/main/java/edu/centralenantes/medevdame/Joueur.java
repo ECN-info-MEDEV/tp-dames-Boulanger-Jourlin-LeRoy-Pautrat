@@ -80,6 +80,7 @@ public class Joueur {
         
         System.out.println("Voici les déplacements possibles:");
         ArrayList<int[]> result=pieceJoue.deplacementsPossibles();
+        //ArrayList<int[]> result=pieceJoue.deplacementsPossibles();
         boolean isDeplacement=false;
         while(!isDeplacement){
             System.out.println("Quel déplacement choisissez vous?");
